@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MapContainer from './MapContainer';
 import LocationList from './LocationList';
+import { getClosestCity } from './helpers';
 
 const cities = {
   'London': {
@@ -49,25 +50,36 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.handleCenterChanged = this.handleCenterChanged.bind(this);
     this.state = {
       coords: {
         lat: 40.713845,
         lng: -74.005912
-      }
+      },
+      selected: 'New York'
     }
   }
 
   handleClick(city) {
     this.setState({
-      coords: cities[city]
+      coords: cities[city],
+      selected: city
     })
+  }
+
+  handleCenterChanged(lat, lng) {
+    let selected = getClosestCity(cities, lat);
+    this.setState({
+      selected: selected
+    })
+
   }
 
   render() {
     return (
       <div>
-        <MapContainer coords={this.state.coords} />
-        <LocationList cities={cities} handleClick={this.handleClick} />
+        <MapContainer coords={this.state.coords} handleCenterChanged={this.handleCenterChanged} />
+        <LocationList cities={cities} selected={this.state.selected} handleClick={this.handleClick} />
       </div>
     );
   }

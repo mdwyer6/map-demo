@@ -5,6 +5,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "express": "^4.15.2",
+    "geo-helpers": "^1.2.6",
     "ms": "^2.0.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
