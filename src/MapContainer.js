@@ -11,7 +11,6 @@ const GettingStartedGoogleMap = withGoogleMap(props =>
   />
 );
 
-
 class MapContainer extends Component {
   constructor(props) {
     super(props);

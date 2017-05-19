@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MapContainer from './MapContainer';
 import LocationList from './LocationList';
+import styles from '../styles/App.css';
 import { getClosestCity } from './helpers';
 
 const cities = {
@@ -72,12 +73,11 @@ class App extends Component {
     this.setState({
       selected: selected
     })
-
   }
 
   render() {
     return (
-      <div>
+      <div className={styles.app}>
         <MapContainer coords={this.state.coords} handleCenterChanged={this.handleCenterChanged} />
         <LocationList cities={cities} selected={this.state.selected} handleClick={this.handleClick} />
       </div>

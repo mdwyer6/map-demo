@@ -1,16 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Location from './Location';
+import styles from '../styles/LocationList.css';
 
-class LocationList extends Component {
-  render() {
-    return (
-      <div>
-        <ul>
-          {Object.keys(this.props.cities).map((city) => <Location selected={city === this.props.selected} location={city} key={city} handleClick={this.props.handleClick} />)}
-        </ul>
-      </div>
-    );
-  }
-}
+const LocationList = (props) => (
+  <ul className={styles.list}>
+    {Object.keys(props.cities).map((city) => <Location selected={city === props.selected} location={city} key={city} handleClick={props.handleClick} />)}
+  </ul>
+);
 
 export default LocationList;
